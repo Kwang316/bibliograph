@@ -236,20 +236,21 @@ with col2:
             st.markdown(f"**Cross-References ({len(connected_edges)})**")
             
             # Display references
-            for edge in connected_edges:
+            for idx, edge in enumerate(connected_edges):
                 neighbor_id = edge['data']['target'] if edge['data'].get('source') == current_verse_id else edge['data']['source']
                 neighbor_node = next((n for n in nodes if n['data'].get('id') == neighbor_id), None)
                 
                 if neighbor_node:
                     neighbor_data = neighbor_node['data']
                     weight = edge['data'].get('weight', 0)
+                    edge_id = edge['data'].get('id', f"edge_{idx}")
                     
                     with st.expander(f"{neighbor_id} (Votes: {weight})"):
                         st.markdown(f"**{neighbor_data.get('book', '')} {neighbor_data.get('chapter', '')}:{neighbor_data.get('verse', '')}**")
                         st.markdown(neighbor_data.get('text', ''))
                         
-                        # Button to add to graph
-                        if st.button(f"Add {neighbor_id} to Graph", key=f"add_{neighbor_id}"):
+                        # Button to add to graph - use edge_id to ensure uniqueness
+                        if st.button(f"Add {neighbor_id} to Graph", key=f"add_{neighbor_id}_{edge_id}_{idx}"):
                             if neighbor_node not in st.session_state.graph_elements:
                                 st.session_state.graph_elements.append(neighbor_node)
                             st.session_state.selected_verse = neighbor_id
