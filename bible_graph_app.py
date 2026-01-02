@@ -343,7 +343,7 @@ cytoscape_html = f"""
         }});
         
         // Highlight selected verse if any
-        const selectedId = '{current_verse_id or ''}';
+        const selectedId = '{current_verse_id if current_verse_id else ""}';
         if (selectedId) {{
             const selectedNode = cy.getElementById(selectedId);
             if (selectedNode.length) {{
