@@ -1,0 +1,107 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+}
+
+#main-content {
+    display: flex;
+    height: 100vh;
+    width: 100%;
+}
+
+/* Graph Visualization Area */
+#cy {
+    flex-grow: 1; /* Takes up most of the space */
+    height: 100vh;
+    z-index: 1; 
+}
+
+/* Reference Panel Area */
+#reference-panel {
+    width: 380px; /* Fixed width for the panel */
+    padding: 20px;
+    background: #fff;
+    box-shadow: -4px 0 8px rgba(0, 0, 0, 0.1);
+    z-index: 2; 
+    overflow-y: auto;
+}
+
+#panel-header {
+    margin-top: 0;
+    font-size: 1.6em;
+    color: #4287f5;
+    border-bottom: 2px solid #eee;
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+}
+
+#current-verse-display {
+    padding: 10px;
+    border: 1px solid #ddd;
+    background: #f9f9f9;
+    margin-bottom: 15px;
+    border-radius: 4px;
+}
+
+.search-container {
+    margin-top: 20px;
+    padding-top: 15px;
+    border-top: 1px solid #eee;
+}
+
+.search-container input, .search-container button {
+    padding: 8px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+/* Tab Styles */
+.tab-controls {
+    display: flex;
+    margin-bottom: 15px;
+}
+
+.tab-button {
+    background-color: #f1f1f1;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 10px 15px;
+    transition: 0.3s;
+    flex-grow: 1;
+    font-weight: bold;
+}
+
+.tab-button:hover {
+    background-color: #ddd;
+}
+
+.tab-button.active {
+    background-color: #4287f5;
+    color: white;
+}
+
+.tab-content {
+    display: none;
+    padding: 6px 12px;
+    border-top: none;
+}
+
+#tsk-list {
+    list-style: none;
+    padding: 0;
+}
+
+#tsk-list li {
+    padding: 5px 0;
+    border-bottom: 1px dotted #eee;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+#tsk-list li:hover {
+    background-color: #f0f0ff;
+}
